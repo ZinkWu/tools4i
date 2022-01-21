@@ -1,9 +1,11 @@
-import { Command } from 'commander'
 
+
+import { Command } from 'commander'
 import commands from './commands.js';
 
 
 function init() {
+
   const program = new Command();
   program.version('0.0.1');
 

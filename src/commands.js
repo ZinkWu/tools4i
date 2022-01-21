@@ -4,6 +4,9 @@ import chalk from 'chalk';
 import check from './todo/check.js';
 import actions from './todo/actions.js'
 
+import utils from './utils.js'
+utils.profileExists();
+
 let profile = JSON.parse(fs.readFileSync('profile.json').toString())
 
 
