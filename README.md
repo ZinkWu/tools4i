@@ -8,7 +8,7 @@
 ```shell
 npm install -g tools4i
 
-#or
+# or
 
 yarn add -g tools4i
 
