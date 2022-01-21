@@ -6,6 +6,21 @@
 ## 想玩一下？
 
 ```shell
+npm install -g tools4i
+
+#or
+
+yarn add -g tools4i
+
+tools4i -V
+
+# 使用天气查询之前请先设置你的所在地
+tools4i setlocaltion Chengdu
+```
+
+
+本地安装
+```shell
 git clone https://github.com/ZinkWu/tools4i.git
 
 cd tools4i
@@ -14,10 +29,10 @@ npm install
 
 npm link
 
-itools -V
+tools4i -V
 
 # 使用天气查询之前请先设置你的所在地
-itools setlocaltion Chengdu
+tools4i setlocaltion Chengdu
 ```
 
 ## TODO

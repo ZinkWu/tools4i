@@ -1,11 +1,11 @@
 {
   "name": "tools4i",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "index.js",
   "type": "module",
   "bin": {
-    "itools": "./index.js"
+    "tools4i": "./index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
