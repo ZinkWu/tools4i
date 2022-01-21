@@ -32,7 +32,7 @@ const commands = [
     ],
     action: (options) => {
       if (!profile.localtion) {
-        console.log(chalk.red('please run mycli setlocation <localtion>'))
+        console.log(chalk.red("please run 'mycli setlocation <localtion>'"))
         return
       }
       if (options.detailed) {
