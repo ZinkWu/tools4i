@@ -23,7 +23,7 @@ const commands = [
   // 天气查询
   {
     command: 'weather',
-    description: 'query the city weather',
+    description: 'Check the weather',
     options: [
       {
         option: '-d --detailed',
@@ -53,11 +53,11 @@ const commands = [
       },
       {
         option: '-r,--rm',
-        description: 'rm'
+        description: 'delete todo'
       },
       {
         option: '-d,--do',
-        description: 'done'
+        description: 'finish a todo'
       },
       {
         option: '-a --all',
@@ -92,7 +92,7 @@ const commands = [
   },
   {
     command: 'book <book-name>',
-    description: 'querty the book info',
+    description: 'query books',
     action: (bookName) => {
       console.log(`book: ${bookName}`)
     }
