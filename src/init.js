@@ -1,5 +1,3 @@
-
-
 import { Command } from 'commander'
 import commands from './commands.js';
 

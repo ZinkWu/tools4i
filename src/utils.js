@@ -1,4 +1,5 @@
 import fs from "fs"
+
 const utils = {
   profileExists() {
     const exists = fs.existsSync('profile.json')
