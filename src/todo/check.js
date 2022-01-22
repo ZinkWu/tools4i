@@ -1,5 +1,6 @@
 import chalk from 'chalk';
-import { DateTime } from 'luxon';
+import {DateTime} from 'luxon';
+import utils from "../utils.js";
 
 const today = DateTime.now().setLocale('zh').toLocaleString()
 
@@ -9,7 +10,6 @@ const check = {
   },
   finished(profile) {
     handler(profile, 'finished')
-
   },
   unfinish(profile) {
     handler(profile, 'unfinish')
@@ -25,7 +25,7 @@ function handler(profile, model) {
   if (keys.length === 0) {
     console.log(chalk.yellowBright("you don't have todo, you can run 'tools4i todo --new todo-content'"))
   } else {
-    if(todos[keys].length === 0){
+    if (todos[keys].length === 0) {
       console.log(chalk.yellowBright("you don't have todo, you can run 'tools4i todo --new todo-content'"))
       return
     }
@@ -36,9 +36,11 @@ function handler(profile, model) {
           result += chalk.blue(key + ":\n")
           todos[key].forEach((todo, index) => {
             if (index !== todos[key].length - 1) {
-              result += `· ${todo.finish ? chalk.green("✓") : chalk.red('x')} ${todo.content}\n`
+              // result += utils.buildTodoOut(todo.content, todo.finish) + "\n"
+              utils.buildTodoOutput(todo.content, todo.finish, "\n")
             } else {
-              result += `· ${todo.finish ? chalk.green("✓") : chalk.red('x')} ${todo.content}`
+              // result += utils.buildTodoOut(todo.content, todo.finish)
+              utils.buildTodoOutput(todo.content, todo.finish)
             }
           })
         }
@@ -46,13 +48,17 @@ function handler(profile, model) {
         result += chalk.blue(key + ":\n")
         todos[key].forEach((todo, index) => {
           if (index !== todos[key].length - 1) {
-            result += `· ${todo.finish ? chalk.green("✓") : chalk.red('x')} ${todo.content}\n`
+            // result += utils.buildTodoOutput(todo.content, todo.finish) + "\n"
+            utils.buildTodoOutput(todo.content, todo.finish, "\n")
           } else {
             if (i !== keys.length - 1) {
-              result += `· ${todo.finish ? chalk.green("✓") : chalk.red('x')} ${todo.content}\n`
-              result += "\n"
+              // result += utils.buildTodoOutput(todo.content, todo.finish) + "\n"
+              utils.buildTodoOutput(todo.content, todo.finish, "\n")
+              // result += "\n"
+              utils.buildTodoOutputResult("\n")
             } else {
-              result += `· ${todo.finish ? chalk.green("✓") : chalk.red('x')} ${todo.content}`
+              // result += utils.buildTodoOutput(todo.content, todo.finish)
+              utils.buildTodoOutput(todo.content, todo.finish)
             }
           }
         })
@@ -62,18 +68,25 @@ function handler(profile, model) {
             return todo
           }
         })
-
-        if (x.length > 0) {
-          result += chalk.blue(key + ":\n")
+        if (x.length === 0) {
+          console.log("")
+          console.log(chalk.red("you currently have no completed todos"))
+          return
+        } else {
+          utils.buildTodoOutPutTitle(key);
           x.forEach((todo, index) => {
             if (index !== x.length - 1) {
-              result += `· ${todo.finish ? chalk.green("✓") : chalk.red('x')} ${todo.content}\n`
+              // result += utils.buildTodoOutput(todo.content, todo.finish) + "\n"
+              utils.buildTodoOutput(todo.content, todo.finish, "\n")
             } else {
               if (i !== keys.length - 1) {
-                result += `· ${todo.finish ? chalk.green("✓") : chalk.red('x')} ${todo.content}\n`
-                result += "\n"
+                // result += utils.buildTodoOutput(todo.content, todo.finish) + "\n"
+                utils.buildTodoOutput(todo.content, todo.finish, "\n")
+                // result += "\n"
+                utils.buildTodoOutputResult("\n")
               } else {
-                result += `· ${todo.finish ? chalk.green("✓") : chalk.red('x')} ${todo.content}`
+                // result +=
+                utils.buildTodoOutput(todo.content, todo.finish)
               }
             }
           })
@@ -84,18 +97,26 @@ function handler(profile, model) {
             return todo
           }
         })
-
-        if (x.length > 0) {
+        if (x.length === 0) {
+          console.log("")
+          console.log(chalk.green("great, you have done all todos"))
+          return
+        } else {
           result += chalk.blue(key + ":\n")
           x.forEach((todo, index) => {
             if (index !== x.length - 1) {
-              result += `· ${todo.finish ? chalk.green("✓") : chalk.red('x')} ${todo.content}\n`
+              // result += utils.buildTodoOutput(todo.content, todo.finish) + "\n"
+              utils.buildTodoOutput(todo.content, todo.finish, "\n")
+
             } else {
               if (i !== keys.length - 1) {
-                result += `· ${todo.finish ? chalk.green("✓") : chalk.red('x')} ${todo.content}\n`
-                result += "\n"
+                // result += utils.buildTodoOutput(todo.content, todo.finish) + "\n"
+                utils.buildTodoOutput(todo.content, todo.finish, "\n")
+                utils.buildTodoOutputResult("\n")
+                // result += "\n"
               } else {
-                result += `· ${todo.finish ? chalk.green("✓") : chalk.red('x')} ${todo.content}`
+                // result += utils.buildTodoOutput(todo.content, todo.finish)
+                utils.buildTodoOutput(todo.content, todo.finish)
               }
             }
           })
@@ -104,7 +125,8 @@ function handler(profile, model) {
       }
     })
     // return result
-    console.log(result)
+    console.log(utils.todoOutputResult)
+    utils.resetTodoOutputResult()
   }
 }
 

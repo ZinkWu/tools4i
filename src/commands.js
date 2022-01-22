@@ -49,15 +49,20 @@ const commands = [
     options: [
       {
         option: '-n,--new <content>',
-        description: 'add todo'
+        description: 'new todo'
       },
+      // TODO: modify todo
+      // {
+      //   option: '-m,--modify',
+      //   description: 'modify todo'
+      // },
       {
-        option: '-r,--rm',
+        option: '-d,--delete',
         description: 'delete todo'
       },
       {
-        option: '-d,--do',
-        description: 'finish a todo'
+        option: '-c,--completion',
+        description: 'completion a todo'
       },
       {
         option: '-a --all',
@@ -68,25 +73,32 @@ const commands = [
         description: 'check finished todo'
       },
       {
-        option: '-u --unfinish',
-        description: 'check unfinish todo'
+        option: '-u --unfinished',
+        description: 'check unfinished todo'
       }
     ],
     action: (options) => {
-      if (options.new) {
-        actions.new(profile, options.new)
-      } else if (options.rm) {
-        actions.rm(profile)
-      } else if (options.do) {
-        actions.do(profile)
-      } else if (options.finished) {
-        check.finished(profile)
-      } else if (options.unfinish) {
-        check.unfinish(profile)
-      } else if (options.all) {
-        check.all(profile)
-      } else {
-        check.today(profile)
+      // if (options.new) {
+      //   actions.new(profile, options.new)
+      // } else if (options.rm) {
+      //   actions.rm(profile)
+      // } else if (options.do) {
+      //   actions.do(profile)
+      // } else if (options.finished) {
+      //   check.finished(profile)
+      // } else if (options.unfinished) {
+      //   check.unfinish(profile)
+      // } else if (options.all) {
+      //   check.all(profile)
+      // } else {
+      //   check.today(profile)
+      // }
+      if(options.new){
+        actions.newTodo(options.new)
+      }else if(options.delete){
+        actions.deleteTodo()
+      }else if(options.completion){
+        actions.completionTodo()
       }
     }
   },
