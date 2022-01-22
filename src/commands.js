@@ -13,10 +13,10 @@ let profile = JSON.parse(fs.readFileSync('profile.json').toString())
 const commands = [
   // 设置所在地，用于天气查询
   {
-    command: 'setlocation <city>',
-    description: 'set u localtion, like wuhou-Chengdu',
-    action: (localtion) => {
-      profile.localtion = localtion
+    command: 'setlocation <location>',
+    description: 'set u location, like wuhou-Chengdu',
+    action: (location) => {
+      profile.location = location
       fs.writeFileSync("profile.json", JSON.stringify(profile, null, 2))
     }
   },
@@ -31,14 +31,14 @@ const commands = [
       }
     ],
     action: (options) => {
-      if (!profile.localtion) {
-        console.log(chalk.red("please run 'mycli setlocation <localtion>'"))
+      if (!profile.location) {
+        console.log(chalk.red("please run 'tools4i setlocation <location>'"))
         return
       }
       if (options.detailed) {
-        shell.exec(`curl -s wttr.in/${profile.localtion}`)
+        shell.exec(`curl -s wttr.in/${profile.location}`)
       } else {
-        shell.exec(`curl -s wttr.in/${profile.localtion}?format=3`)
+        shell.exec(`curl -s wttr.in/${profile.location}?format=3`)
       }
     }
   },

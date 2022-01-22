@@ -20,7 +20,7 @@ const actions = {
     const choices = []
     const todos = profile.todos
     if (Object.keys(todos).length === 0) {
-      console.log(chalk.yellowBright("you don't have todo, you can run 'mycli todo --new toco-content'"))
+      console.log(chalk.yellowBright("you don't have todo, you can run 'tools4i todo --new todo-content'"))
       return 
     }
     for (const key in todos) {
@@ -51,7 +51,7 @@ const actions = {
     const choices = []
     const todos = profile.todos
     if (Object.keys(todos).length === 0) {
-      console.log(chalk.yellowBright("you don't have todo, you can run 'mycli todo --new toco-content'"))
+      console.log(chalk.yellowBright("you don't have todo, you can run 'tools4i todo --new todo-content'"))
       return 
     }
     for (const key in todos) {

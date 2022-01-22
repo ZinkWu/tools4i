@@ -2,7 +2,7 @@ import fs from "fs"
 
 const utils = {
   initObj: {
-    localtion: "",
+    location: "",
     todos: {}
   },
   profileExists() {

@@ -23,8 +23,12 @@ function handler(profile, model) {
   const todos = profile.todos
   const keys = Object.keys(todos)
   if (keys.length === 0) {
-    console.log(chalk.yellowBright("you don't have todo, you can run 'mycli todo --new toco-content'"))
+    console.log(chalk.yellowBright("you don't have todo, you can run 'tools4i todo --new todo-content'"))
   } else {
+    if(todos[keys].length === 0){
+      console.log(chalk.yellowBright("you don't have todo, you can run 'tools4i todo --new todo-content'"))
+      return
+    }
     let result = "\n"
     keys.forEach((key, i) => {
       if (model === "today") {
