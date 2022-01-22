@@ -3,8 +3,8 @@ import shell from 'shelljs'
 import chalk from 'chalk';
 import check from './todo/check.js';
 import actions from './todo/actions.js'
-
 import utils from './utils.js'
+
 utils.profileExists();
 
 let profile = JSON.parse(fs.readFileSync('profile.json').toString())
@@ -78,27 +78,20 @@ const commands = [
       }
     ],
     action: (options) => {
-      // if (options.new) {
-      //   actions.new(profile, options.new)
-      // } else if (options.rm) {
-      //   actions.rm(profile)
-      // } else if (options.do) {
-      //   actions.do(profile)
-      // } else if (options.finished) {
-      //   check.finished(profile)
-      // } else if (options.unfinished) {
-      //   check.unfinish(profile)
-      // } else if (options.all) {
-      //   check.all(profile)
-      // } else {
-      //   check.today(profile)
-      // }
-      if(options.new){
+      if (options.new) {
         actions.newTodo(options.new)
-      }else if(options.delete){
+      } else if (options.delete) {
         actions.deleteTodo()
-      }else if(options.completion){
+      } else if (options.completion) {
         actions.completionTodo()
+      } else if (options.all) {
+        check.all()
+      } else if (options.finished) {
+        check.finished()
+      } else if (options.unfinished) {
+        check.unfinished()
+      } else {
+        check.today()
       }
     }
   },
