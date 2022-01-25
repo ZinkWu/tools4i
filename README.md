@@ -12,7 +12,7 @@ npm install -g tools4i
 
 yarn add -g tools4i
 
-tools4i -V
+tools4i -h
 
 # 使用天气查询之前请先设置你的所在地
 tools4i setlocaltion Chengdu
@@ -29,7 +29,7 @@ npm install
 
 npm link
 
-tools4i -V
+tools4i -h
 
 # 使用天气查询之前请先设置你的所在地
 tools4i setlocaltion Chengdu
