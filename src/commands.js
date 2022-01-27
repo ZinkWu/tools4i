@@ -1,4 +1,3 @@
-import fs from "fs"
 import shell from 'shelljs'
 import chalk from 'chalk';
 import check from './todo/check.js';
@@ -7,17 +6,15 @@ import utils from './utils.js'
 
 utils.profileExists();
 
-let profile = JSON.parse(fs.readFileSync('profile.json').toString())
-
-
 const commands = [
   // 设置所在地，用于天气查询
   {
     command: 'setlocation <location>',
     description: 'set u location, like wuhou-Chengdu',
     action: (location) => {
+      const profile = utils.readProfile()
       profile.location = location
-      fs.writeFileSync("profile.json", JSON.stringify(profile, null, 2))
+      utils.writeProfile(profile)
     }
   },
   // 天气查询
@@ -31,6 +28,7 @@ const commands = [
       }
     ],
     action: (options) => {
+      const profile = utils.readProfile()
       if (!profile.location) {
         console.log(chalk.red("please run 'tools4i setlocation <location>'"))
         return

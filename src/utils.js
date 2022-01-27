@@ -1,5 +1,12 @@
 import fs from "fs"
 import chalk from 'chalk';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const { dirname } = path
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const profilePath = path.join(__dirname, 'profile.json')
 
 const utils = {
   initObj: {
@@ -7,20 +14,20 @@ const utils = {
     todos: {}
   },
   profileExists() {
-    const exists = fs.existsSync('profile.json')
-    if (!exists) {
-      fs.writeFileSync("profile.json", JSON.stringify(this.initObj))
+    console.log(profilePath)
+    if (!fs.existsSync(profilePath)) {
+      fs.writeFileSync(profilePath, JSON.stringify(this.initObj))
     }
   },
   readProfile() {
-    return JSON.parse(fs.readFileSync('profile.json').toString())
+    return JSON.parse(fs.readFileSync(profilePath).toString())
   },
   writeProfile(data) {
-    fs.writeFileSync('profile.json', JSON.stringify(data, null, 2))
+    fs.writeFileSync(profilePath, JSON.stringify(data, null, 2))
   },
   // todos utils
   todoOutputResult: "",
-  buildTodoOutputResult(str){
+  buildTodoOutputResult(str) {
     this.todoOutputResult += str;
   },
   buildTodoOutPutTitle(title) {
@@ -30,7 +37,7 @@ const utils = {
     status
       ? this.todoOutputResult += this.buildFinishTodo(text)
       : this.todoOutputResult += this.buildUnfinishTodo(text);
-    if(endStr){
+    if (endStr) {
       this.todoOutputResult += endStr
     }
   },
