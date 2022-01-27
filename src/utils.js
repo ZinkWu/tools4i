@@ -14,7 +14,6 @@ const utils = {
     todos: {}
   },
   profileExists() {
-    console.log(profilePath)
     if (!fs.existsSync(profilePath)) {
       fs.writeFileSync(profilePath, JSON.stringify(this.initObj))
     }
