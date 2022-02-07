@@ -34,7 +34,7 @@ const commands = [
         return
       }
       if (options.detailed) {
-        shell.exec(`curl -s wttr.in/${profile.location}`)
+        shell.exec(`curl -s wttr.in/${profile.location}?lang=zh-cn`)
       } else {
         shell.exec(`curl -s wttr.in/${profile.location}?format=3`)
       }
@@ -98,6 +98,14 @@ const commands = [
     description: 'query books',
     action: (bookName) => {
       console.log(`book: ${bookName}`)
+    }
+  },
+  {
+    command: 'gitignore',
+    description: 'generate .gitignore',
+    // TODO: 参数：选择模板
+    action: () => {
+      utils.generateIgnore()
     }
   }
 ]

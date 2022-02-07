@@ -48,7 +48,17 @@ const utils = {
   },
   resetTodoOutputResult() {
     this.todoOutputResult = ""
+  },
+  // gitignore
+  getPwd(){
+    return path.resolve('./')
+  },
+  generateIgnore(){
+    const pwd = this.getPwd()
+    const file = path.join(pwd, ".gitignore")
+    fs.writeFileSync(file, "")
   }
+  // 模板
 }
 
 export default utils;
